@@ -1,0 +1,17 @@
+version: '3'
+services:
+        os:
+           image: apachewithssl
+           build: ./webapp
+           container_name: apache_web
+           restart: always
+           ports:
+             - "80:80"
+             - "443:443"
+           volumes:
+             - /etc/ssl:/etc/ssl:z
+             - /etc/apache2/sites-available:/etc/apache2/sites-available:z
+             - /etc/apache2/conf-available:/etc/apache2/conf-available:z
+             - /var/www/html:/var/www/html:z 
+
+
